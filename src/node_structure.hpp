@@ -8,10 +8,17 @@
 #ifndef ANALGO_NODE_STRUCTURE_H_
 #define ANALGO_NODE_STRUCTURE_H_
 
+#include "string"
+
 class House {
+    protected:
+        std::string nama_bapak;
+        std::string nama_ibu;
+        int32_t nomor_rumah;
+
     public:
-        House();
-        void exampleMethod();
+        House(std::string, std::string, int32_t);
+        static House createFromString(std::string);
 };
 
 #endif
