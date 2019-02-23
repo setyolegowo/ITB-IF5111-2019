@@ -8,10 +8,21 @@
 
 #include <iostream>
 #include <fstream>
-#include <vector>
 
 #include "algo/binary_search_tree.hpp"
 #include "node_structure.hpp"
+
+void readFile(char* filename, std::vector<House>* houseList)
+{
+    std::ifstream csvfile(filename);
+    std::string line = "";
+    getline(csvfile, line);
+    while (getline(csvfile, line))
+    {
+        houseList->push_back(House::createFromString(line));
+    }
+    csvfile.close();
+}
 
 int main(int argc, char** argv)
 {
@@ -21,13 +32,15 @@ int main(int argc, char** argv)
     }
 
     std::vector<House> houseList;
+    readFile(argv[1], &houseList);
 
-    std::ifstream csvfile(argv[1]);
-    std::string line = "";
-    getline(csvfile, line);
-    while (getline(csvfile, line))
-    {
-        houseList.push_back(House::createFromString(line));
+    std::cout << "Using binary search" << std::endl;
+    BinarySearch search;
+    if (search.find(&houseList)) {
+        std::cout << "FOUND" << std::endl;
+    } else {
+        std::cout << "NOT FOUND" << std::endl;
     }
+
     return 0;
 }

@@ -7,3 +7,19 @@
  */
 
 #include "binary_search_tree.hpp"
+
+BinarySearch::BinarySearch() {
+
+}
+
+bool BinarySearch::find(std::vector<House> * houseList)
+{
+    std::vector<House>::iterator it;
+
+    for(it = houseList->begin(); it != houseList->end(); ++it)
+    {
+        // Loop
+    }
+
+    return true;
+}
