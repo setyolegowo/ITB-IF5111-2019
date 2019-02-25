@@ -31,7 +31,7 @@ House House::createFromString(std::string row)
     nama_ibu = row.substr(0, pos);
     row.erase(0, pos + delimiter.length());
 
-    nomor_rumah = stoi(row);
+    nomor_rumah = std::stoi(row);
 
     House house(nama_bapak, nama_ibu, nomor_rumah);
 
