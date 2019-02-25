@@ -38,7 +38,7 @@ void readFile(char* filename, std::vector<House>* houseList)
 
 BaseAlgorithm * chooseAlgorithm(char* choose, int argc, char** argv)
 {
-    if (strcmp(choose, "binary") == 0) {
+    if (std::strcmp(choose, "binary") == 0) {
         std::cout << "Using binary search" << std::endl;
         return new BinarySearch();
     }
