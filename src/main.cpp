@@ -9,6 +9,7 @@
 #include <iostream>
 #include <fstream>
 #include <sys/time.h>
+#include <cstring>
 
 #include "algo/base_algo.hpp"
 #include "algo/binary_search_tree.hpp"
@@ -38,7 +39,7 @@ void readFile(char* filename, std::vector<House>* houseList)
 
 BaseAlgorithm * chooseAlgorithm(char* choose, int argc, char** argv)
 {
-    if (std::strcmp(choose, "binary") == 0) {
+    if (strcmp(choose, "binary") == 0) {
         std::cout << "Using binary search" << std::endl;
         return new BinarySearch();
     }
