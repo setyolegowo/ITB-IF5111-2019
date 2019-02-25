@@ -29,13 +29,13 @@ void readFile(char* filename, std::vector<House>* houseList, size_t max_data)
 {
     std::ifstream csvfile(filename);
     std::string line = "";
+
     getline(csvfile, line);
-    int32_t count = 1;
-    while (getline(csvfile, line) && count < max_data)
+    for (uint32_t count = 0; getline(csvfile, line) && count < max_data; count++)
     {
         houseList->push_back(House::createFromString(line));
-        count++;
     }
+
     csvfile.close();
 }
 
