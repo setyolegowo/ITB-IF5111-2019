@@ -12,12 +12,11 @@
 #include <stdint.h>
 
 class House {
-    protected:
+    public:
         std::string nama_bapak;
         std::string nama_ibu;
         int32_t nomor_rumah;
 
-    public:
         House(std::string, std::string, int32_t);
         static House createFromString(std::string);
 };
