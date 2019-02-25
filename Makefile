@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-W
+CFLAGS=-Wall -std=c++11
 OUTPUT_DIR=dist
 OBJECT_DIR=$(OUTPUT_DIR)/obj
 OUTPUT_PROG=$(OUTPUT_DIR)/output

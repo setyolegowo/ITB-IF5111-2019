@@ -5,5 +5,5 @@ compiler:
   - gcc
 
 script:
-  - make clear
+  - make clean
   - make
