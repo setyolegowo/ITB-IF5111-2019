@@ -8,7 +8,8 @@
 #ifndef ANALGO_NODE_STRUCTURE_H_
 #define ANALGO_NODE_STRUCTURE_H_
 
-#include "string"
+#include <string>
+#include <stdint.h>
 
 class House {
     protected:
