@@ -13,6 +13,7 @@
 
 #include "algo/base_algo.hpp"
 #include "algo/binary_search_tree.hpp"
+#include "algo/index_search.hpp"
 #include "node_structure.hpp"
 
 /**
@@ -41,7 +42,10 @@ void readFile(char* filename, std::vector<House>* houseList, size_t max_data)
 
 BaseAlgorithm * chooseAlgorithm(char* choose, int argc, char** argv)
 {
-    if (strcmp(choose, "binary") == 0) {
+    if (strcmp(choose, "index") == 0) {
+        std::cout << "Using binary search" << std::endl;
+        return IndexSearch::createFromConsoleArgument(argc, argv);
+    } else if (strcmp(choose, "binary") == 0) {
         std::cout << "Using binary search" << std::endl;
         return BinarySearch::createFromConsoleArgument(argc, argv);
     }

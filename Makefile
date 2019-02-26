@@ -17,6 +17,7 @@ build: $(OBJS)
 	chmod +x $(OUTPUT_PROG)
 
 test: $(OUTPUT_PROG)
+	./$(OUTPUT_PROG) data/daftar_rumah.small.csv 100 index 4
 	./$(OUTPUT_PROG) data/daftar_rumah.small.csv 100 binary "Abyasa Adriansyah"
 
 .PHONY: clean

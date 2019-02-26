@@ -6,8 +6,6 @@
  * @since 2019.02.18
  */
 
-#include <cstring>
-
 #include "binary_search_tree.hpp"
 
 BinarySearch::BinarySearch(char* _nama_bapak) {
