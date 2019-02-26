@@ -43,7 +43,7 @@ bool BinarySearch::find(std::vector<House> * houseList)
         }
     }
     if (lower_bound == higher_bound && !isFound) {
-        isFound = houseList->at(lower_bound).nama_bapak == this->nama_bapak;
+        isFound = houseList->at(selected_index).nama_bapak.compare(this->nama_bapak) == 0;
     }
 
     return isFound;
