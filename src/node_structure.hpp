@@ -16,8 +16,9 @@ class House {
         std::string nama_bapak;
         std::string nama_ibu;
         int32_t nomor_rumah;
+        int32_t posisi_rumah;
 
-        House(std::string, std::string, int32_t);
+        House(std::string, std::string, int32_t, int32_t);
         static House createFromString(std::string);
 };
 

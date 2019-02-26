@@ -16,6 +16,7 @@
 #include "algo/binary_search_tree.hpp"
 #include "algo/linear_search.hpp"
 #include "algo/log_linear_search.hpp"
+#include "algo/shortest_path.hpp"
 #include "node_structure.hpp"
 
 /**
@@ -56,6 +57,9 @@ BaseAlgorithm * chooseAlgorithm(char* choose, int argc, char** argv)
     } else if (strcmp(choose, "loglin") == 0) {
         std::cout << "Using log linear search" << std::endl;
         return LogLinearSearch::createFromConsoleArgument(argc, argv);
+    }else if (strcmp(choose, "shortest") == 0) {
+        std::cout << "Using shortest path" << std::endl;
+        return ShortestPath::createFromConsoleArgument(argc, argv);
     }
     return 0;
 }
