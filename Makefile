@@ -19,6 +19,8 @@ build: $(OBJS)
 test: $(OUTPUT_PROG)
 	./$(OUTPUT_PROG) data/daftar_rumah.small.csv 100 index 4
 	./$(OUTPUT_PROG) data/daftar_rumah.small.csv 100 binary "Abyasa Adriansyah"
+	./$(OUTPUT_PROG) data/daftar_rumah.small.csv 100 linear "Shania Purwanti"
+	./$(OUTPUT_PROG) data/daftar_rumah.small.csv 100 loglin C
 
 .PHONY: clean
 
