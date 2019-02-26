@@ -7,6 +7,7 @@
  */
 
 #include <string>
+#include <stdexcept>
 
 #include "index_search.hpp"
 

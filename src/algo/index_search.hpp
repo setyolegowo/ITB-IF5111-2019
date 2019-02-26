@@ -13,7 +13,7 @@
 class IndexSearch: public BaseAlgorithm
 {
     private:
-        int32_t index;
+        uint32_t index;
         IndexSearch(int);
 
     public:
