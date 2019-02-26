@@ -8,13 +8,20 @@
 #ifndef ALGO_BINARY_SEARCH_TREE_H_
 #define ALGO_BINARY_SEARCH_TREE_H_
 
+#include <string>
+
 #include "base_algo.hpp"
 
 class BinarySearch: public BaseAlgorithm
 {
+    private:
+        std::string nama_bapak;
+        BinarySearch(char*);
+
     public:
-        BinarySearch();
         bool find(std::vector<House> *);
+
+        static BinarySearch* createFromConsoleArgument(int, char **);
 };
 
 #endif
