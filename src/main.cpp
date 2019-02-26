@@ -43,7 +43,7 @@ BaseAlgorithm * chooseAlgorithm(char* choose, int argc, char** argv)
 {
     if (strcmp(choose, "binary") == 0) {
         std::cout << "Using binary search" << std::endl;
-        return new BinarySearch();
+        return BinarySearch::createFromConsoleArgument(argc, argv);
     }
     return 0;
 }
@@ -55,9 +55,16 @@ int main(int argc, char** argv)
         return -127;
     }
 
-    BaseAlgorithm * algo = chooseAlgorithm(argv[3], argc, argv);
-    if (algo == 0) {
-        std::cerr << "The algorithm is not found" << std::endl;
+    BaseAlgorithm *algo;
+
+    try {
+        algo = chooseAlgorithm(argv[3], argc, argv);
+        if (algo == 0) {
+            std::cerr << "The algorithm is not found" << std::endl;
+            return -127;
+        }
+    } catch (const char *msg) {
+        std::cerr << msg << std::endl;
         return -127;
     }
 
