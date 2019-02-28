@@ -26,13 +26,13 @@
 
 class Test {
     public:
-        static uint32_t getRandom(uint32_t);
+        static uint32_t getRandomIndex(uint32_t);
         static long getMicrotime();
         static void readFile(char*, std::vector<House>*, size_t);
         static BaseAlgorithm * chooseAlgorithm(char*, int, char**);
         static House * getRandomFromVector(std::vector<House> *);
         static char * str2Char(std::string);
-        static int modifyArgument(char*, char**, std::vector<House> *);
+        static int modifyArgument(char**, std::vector<House> *);
         static int runTesting(int, char**);
 };
 

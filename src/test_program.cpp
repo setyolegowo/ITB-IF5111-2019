@@ -22,10 +22,6 @@
 #include "node_structure.hpp"
 #include "test_program.hpp"
 
-uint32_t Test::getRandom(uint32_t max){
-    return ((double) rand() / (RAND_MAX)) * max;
-}
-
 long Test::getMicrotime()
 {
     struct timeval currentTime;
@@ -65,6 +61,10 @@ BaseAlgorithm * Test::chooseAlgorithm(char* choose, int argc, char** argv)
     return 0;
 }
 
+uint32_t Test::getRandomIndex(uint32_t max){
+    return std::rand() % max;
+}
+
 House * Test::getRandomFromVector(std::vector<House> * houseList) {
     uint32_t index = std::rand() % houseList->size();
     return &(houseList->at(index));
@@ -76,22 +76,31 @@ char * Test::str2Char(std::string str) {
     return cstr;
 }
 
-int Test::modifyArgument(char* choose, char** argv, std::vector<House> * tempHouseList)
+int Test::modifyArgument(char** argv, std::vector<House> * tempHouseList)
 {
-    if (strcmp(choose, "index") == 0) {
-        // std::cout << getRandom(tempHouseList->size()) << std::endl;
-        // argv[4] = str2Char("10");
-    } else if (strcmp(choose, "binary") == 0) {
+    if (strcmp(argv[3], "index") == 0) {
+        uint32_t index = getRandomIndex(tempHouseList->size());
+        argv[4] = str2Char(std::to_string(index));
+
+    } else if (strcmp(argv[3], "binary") == 0) {
+        std::string target = getRandomFromVector(tempHouseList)->nama_bapak;
+        argv[4] = str2Char(target);
+
+    } else if (strcmp(argv[3], "linear") == 0) {
+        std::string target = getRandomFromVector(tempHouseList)->nama_ibu;
+        argv[4] = str2Char(target);
+
+    } else if (strcmp(argv[3], "loglin") == 0) {
+        char c = (char) ('A' + (rand() % 26));
+        std::string str(1, c);
+        argv[4] = str2Char(str);
+
+    } else if (strcmp(argv[3], "shortest") == 0) {
+        uint32_t index = getRandomIndex(tempHouseList->size());
+        argv[4] = str2Char(std::to_string(index));
         
-    } else if (strcmp(choose, "linear") == 0) {
-        // std::string target = getRandomFromVector(tempHouseList)->nama_ibu;
-        // argv[4] = str2Char(target);
-    } else if (strcmp(choose, "loglin") == 0) {
-        
-    } else if (strcmp(choose, "shortest") == 0) {
-        
-    } else if (strcmp(choose, "square") == 0) {
-        
+    } else if (strcmp(argv[3], "square") == 0) {
+        argv[4] = str2Char("average");
     }
     return 0;
 }
@@ -122,21 +131,21 @@ int Test::runTesting(int argc, char** argv)
         for(int j=0; j<test_n; j++) {
 
             long start_time, finish_time;
-            start_time = getMicrotime();
 
-            // std::vector<House> tempList(houseList.begin(), houseList.begin() + 10);
-            // // modifyArgument(argv[3], argv, &temp);
+            std::vector<House> tempList(houseList.begin(), houseList.begin() + i);
+            modifyArgument(argv, &tempList);
 
             BaseAlgorithm *algo = chooseAlgorithm(argv[3], 5, argv);
-            algo->find(&houseList);
-
+            
+            start_time = getMicrotime();
+            algo->find(&tempList);
             finish_time = getMicrotime();
             sum_time += finish_time - start_time;
         }
 
         long avg_time = sum_time / test_n;
 
-        std::cout << i << " " << avg_time << std::endl;
+        // std::cout << i << " " << avg_time << std::endl;
         myfile << i << "," << avg_time << ",\n";
     }
     
