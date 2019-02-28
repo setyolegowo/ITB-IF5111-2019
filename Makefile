@@ -21,6 +21,7 @@ test: $(OUTPUT_PROG)
 	./$(OUTPUT_PROG) data/daftar_rumah.small.csv 100 binary "Abyasa Adriansyah"
 	./$(OUTPUT_PROG) data/daftar_rumah.small.csv 100 linear "Shania Purwanti"
 	./$(OUTPUT_PROG) data/daftar_rumah.small.csv 100 loglin C
+	./$(OUTPUT_PROG) data/daftar_rumah.small.csv 100 square average
 	./$(OUTPUT_PROG) data/daftar_rumah.small.csv 20 shortest 10
 
 .PHONY: clean
