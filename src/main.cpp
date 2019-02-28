@@ -17,6 +17,7 @@
 #include "algo/linear_search.hpp"
 #include "algo/log_linear_search.hpp"
 #include "algo/shortest_path.hpp"
+#include "algo/square_delivery.hpp"
 #include "node_structure.hpp"
 
 /**
@@ -57,9 +58,12 @@ BaseAlgorithm * chooseAlgorithm(char* choose, int argc, char** argv)
     } else if (strcmp(choose, "loglin") == 0) {
         std::cout << "Using log linear search" << std::endl;
         return LogLinearSearch::createFromConsoleArgument(argc, argv);
-    }else if (strcmp(choose, "shortest") == 0) {
+    } else if (strcmp(choose, "shortest") == 0) {
         std::cout << "Using shortest path" << std::endl;
         return ShortestPath::createFromConsoleArgument(argc, argv);
+    } else if (strcmp(choose, "square") == 0) {
+        std::cout << "Using square delivery" << std::endl;
+        return SquareDelivery::createFromConsoleArgument(argc, argv);
     }
     return 0;
 }
