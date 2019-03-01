@@ -56,12 +56,11 @@ bool SquareDelivery::find(std::vector<House> *houseList)
 
 std::string *SquareDelivery::getDeliverTo(uint32_t currentIndex, std::vector<House> *houseList)
 {
-    size_t selectedIndex;
     size_t houseListSize = houseList->size();
+    size_t selectedIndex = rand() % (houseListSize - 1);
 
     switch (this->type) {
         case 0:
-            selectedIndex = rand() % (houseListSize - 1);
             break;
 
         case 1:
