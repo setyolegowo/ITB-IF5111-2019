@@ -7,6 +7,6 @@ for n in {3..27..2}; do
     for i in {1..20}; do
         result[$i]=$(dist/output data/daftar_rumah.small.csv $n shortest $index | grep -Eo "[0-9]+")
     done
-    combine_result=`echo ${result[@]} | sed 's/ /,/g'`
-    echo "\"R $n\",$combine_result"
+    combine_result=`echo ${result[@]} | sed 's/ /;/g'`
+    echo "\"R $n\";$combine_result"
 done
