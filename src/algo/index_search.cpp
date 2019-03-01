@@ -34,8 +34,12 @@ IndexSearch *IndexSearch::createFromConsoleArgument(int argc, char **argv)
 
 bool IndexSearch::find(std::vector<House> *houseList)
 {
-    if (houseList->size() > this->index) {
+    try {
+        houseList->at(this->index);
         return true;
+    } catch (const std::out_of_range& oor) {
+        //
     }
+
     return false;
 }
